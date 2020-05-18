@@ -2,17 +2,31 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
     <HelloWorld msg="Welcome to Your Vue.js App" />
+      
+<div>
+  <b-button >Button</b-button>
+  <b-button variant="danger">Button</b-button>
+  <b-button variant="success">Button</b-button>
+  <b-button variant="outline-primary">Button</b-button>
+</div>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import HelloWorld from './components/HelloWorld.vue';
+import { mapActions } from 'vuex';
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
-    HelloWorld
-  }
+    HelloWorld,
+  },
+  computed: {
+    ...mapActions('movies', ['fetchMovies']),
+  },
+  mounted() {
+    this.fetchMovies;
+  },
 };
 </script>
 
